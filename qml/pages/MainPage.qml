@@ -8,6 +8,9 @@ import org.nemomobile.configuration 1.0
 Page {
     id: page
 
+    property bool largeScreen: Screen.sizeCategory === Screen.Large ||
+                               Screen.sizeCategory === Screen.ExtraLarge
+
     property Transition customTransition: Transition {
                                               to: 'Portrait,Landscape,PortraitInverted,LandscapeInverted'
                                               from: 'Portrait,Landscape,PortraitInverted,LandscapeInverted'
@@ -156,10 +159,8 @@ Page {
                 id: amPm
                 text: Qt.formatDateTime(new Date(), "ap")
                 font.family: digitalFont.name
-                font.pixelSize: page.isLandscape ? (parent.width / parent.height
-                                                    > 1.6 ? Theme.fontSizeExtraLarge
-                                                            * 3 : Theme.fontSizeExtraLarge
-                                                            * 2) : Theme.fontSizeExtraLarge * 2
+                font.pixelSize: page.isLandscape ? (largeScreen ? Theme.fontSizeExtraLarge * 4 : Them.fontSizeExtraLarge * 2
+                                                            ) : Theme.fontSizeExtraLarge * 2
                 anchors.right: parent.right
                 anchors.rightMargin: Theme.paddingLarge
                 y: page.isLandscape ? (Theme.fontSizeMedium) : (parent.height / 2) - 150
@@ -181,10 +182,9 @@ Page {
                 verticalAlignment: Text.AlignVCenter
                 height: parent.height
                 width: parent.width
-                font.pixelSize: page.isLandscape ? (parent.width / parent.height
-                                                    > 1.6 ? Theme.fontSizeExtraLarge
-                                                            * 8 : Theme.fontSizeExtraLarge
-                                                            * 7) : Theme.fontSizeExtraLarge * 4
+                font.pixelSize: page.isLandscape ? (largeScreen ? Theme.fontSizeExtraLarge
+                                                            * 11 : Theme.fontSizeExtraLarge
+                                                            * 7) : (largeScreen ? Theme.fontSizeExtraLarge * 8 : Theme.fontSizeExtraLarge * 4)
                 font.family: digitalFont.name
             }
         }
@@ -195,7 +195,7 @@ Page {
             gradient: Gradient {
                 GradientStop {
                     position: 0.0
-                    color: "#4D4D4D"
+                    color: "#303030"
                 }
                 GradientStop {
                     position: 0.25
