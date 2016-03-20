@@ -159,7 +159,7 @@ Page {
                 id: amPm
                 text: Qt.formatDateTime(new Date(), "ap")
                 font.family: digitalFont.name
-                font.pixelSize: page.isLandscape ? (largeScreen ? Theme.fontSizeExtraLarge * 4 : Them.fontSizeExtraLarge * 2
+                font.pixelSize: page.isLandscape ? (largeScreen ? Theme.fontSizeExtraLarge * 4 : Theme.fontSizeExtraLarge * 2
                                                             ) : Theme.fontSizeExtraLarge * 2
                 anchors.right: parent.right
                 anchors.rightMargin: Theme.paddingLarge
