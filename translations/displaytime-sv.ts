@@ -25,11 +25,11 @@
     </message>
     <message>
         <source>Pick Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj färg</translation>
     </message>
     <message>
         <source>Clock-text brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>Klocktextens ljusstyrka</translation>
     </message>
 </context>
 </TS>
