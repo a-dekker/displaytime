@@ -33,7 +33,8 @@ OTHER_FILES += qml/displaytime.qml \
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
-#TRANSLATIONS += translations/displaytime-de.ts
+TRANSLATIONS += translations/displaytime-sv.ts \
+                translations/displaytime-nl.ts
 
 HEADERS += \
     src/osread.h \

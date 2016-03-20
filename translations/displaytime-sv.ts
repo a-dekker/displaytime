@@ -23,5 +23,13 @@
         <source>Custom display color</source>
         <translation>Anpassad skärmfärg</translation>
     </message>
+    <message>
+        <source>Pick Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clock-text brightness</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

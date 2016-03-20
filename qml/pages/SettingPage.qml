@@ -149,7 +149,7 @@ Dialog {
                         radius: 10.0
                     }
                     Label {
-                        text: "Pick Color"
+                        text: qsTr("Pick Color")
                         color: colorPickerButton.down ? Theme.highlightColor : Theme.primaryColor
                         anchors.verticalCenter: parent.verticalCenter
                     }
@@ -174,7 +174,7 @@ Dialog {
                 maximumValue: 1
                 value: myset.value("brightness") > -1 ? (1 - myset.value("brightness")) : 0.5
                 valueText: value.toFixed(1)
-                label: "Clock-text brightness"
+                label: qsTr("Clock-text brightness")
             }
             Label {
                 text: "© Arno Dekker 2014-2015"
