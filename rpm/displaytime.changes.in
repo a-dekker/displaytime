@@ -8,6 +8,12 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sat Aug 13 2016 Jack Tar <jack.tar@example.com> 0.0.1-8
+- Harbourized, black line around color block
+
+* Sun Mar 20 2016 Jack Tar <jack.tar@example.com> 0.0.1-7
+- Swedish and Dutch translation added
+
 * Fri Feb 27 2014 Jack Tar <jack.tar@example.com> 0.0.1-6
 - Other placement of am/pm sign
 

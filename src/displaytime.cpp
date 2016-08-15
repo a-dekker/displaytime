@@ -57,11 +57,10 @@ int main(int argc, char *argv[])
     view->engine()->addImportPath(SailfishApp::pathTo("lib/").toLocalFile());
     view->engine()->addImportPath(SailfishApp::pathTo("qml/components/").toLocalFile());
     view->engine()->addImportPath(SailfishApp::pathTo("qml/pages/").toLocalFile());
-    qmlRegisterType<Launcher>("Launcher", 1 , 0 , "App");
-    qmlRegisterType<Settings>("Settings", 1 , 0 , "MySettings");
+    qmlRegisterType<Launcher>("harbour.displaytime.Launcher", 1 , 0 , "App");
+    qmlRegisterType<Settings>("harbour.displaytime.Settings", 1 , 0 , "MySettings");
 
     view->setSource(SailfishApp::pathTo("qml/displaytime.qml"));
     view->showFullScreen();
     return app->exec();
 }
-

@@ -1,8 +1,8 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import Launcher 1.0
-import Settings 1.0
-import org.nemomobile.dbus 1.0
+import harbour.displaytime.Launcher 1.0
+import harbour.displaytime.Settings 1.0
+import org.nemomobile.dbus 2.0
 import org.nemomobile.configuration 1.0
 
 Page {
@@ -75,9 +75,6 @@ Page {
         triggeredOnStart: mainapp.backlight_on == "true" ? true : false
         onTriggered: {
             dbus.call("req_display_blanking_pause", undefined)
-            //console.log (mainapp.backlight_on)
-            //console.log (timer.interval)
-            //console.log (timer.running)
         }
 
         onRunningChanged: {
@@ -89,11 +86,11 @@ Page {
         property DBusInterface _dbus: DBusInterface {
                                           id: dbus
 
-                                          destination: "com.nokia.mce"
+                                          service: "com.nokia.mce"
                                           path: "/com/nokia/mce/request"
                                           iface: "com.nokia.mce.request"
 
-                                          busType: DBusInterface.SystemBus
+                                          bus : DBusInterface.SystemBus
                                       }
     }
 

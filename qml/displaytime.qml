@@ -1,8 +1,8 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.displaytime.Settings 1.0
 import "pages"
 import "cover"
-import Settings 1.0
 
 ApplicationWindow
 {

@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import Settings 1.0
+import harbour.displaytime.Settings 1.0
 
 Dialog {
     id: page
@@ -146,6 +146,8 @@ Dialog {
                         width: height
                         height: parent.height
                         color: myset.contains("colorcode") ? myset.value("colorcode") : "#e60003"
+                        border.color: "black"
+                        border.width: 3
                         radius: 10.0
                     }
                     Label {

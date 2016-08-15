@@ -10,7 +10,7 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-TARGET = displaytime
+TARGET = harbour-displaytime
 
 CONFIG += sailfishapp
 
@@ -24,20 +24,33 @@ OTHER_FILES += qml/displaytime.qml \
     rpm/displaytime.spec \
     rpm/displaytime.yaml \
     translations/*.ts \
-    displaytime.desktop \
+    harbour-displaytime.desktop \
     qml/pages/MainPage.qml \
     qml/pages/SettingPage.qml \
     qml/fonts/digital-7.ttf \
     qml/fonts/digital-7 (mono).ttf
 
+icon86.files += icons/86x86/harbour-displaytime.png
+icon86.path = /usr/share/icons/hicolor/86x86/apps
+
+icon108.files += icons/108x108/harbour-displaytime.png
+icon108.path = /usr/share/icons/hicolor/108x108/apps
+
+icon128.files += icons/128x128/harbour-displaytime.png
+icon128.path = /usr/share/icons/hicolor/128x128/apps
+
+icon256.files += icons/256x256/harbour-displaytime.png
+icon256.path = /usr/share/icons/hicolor/256x256/apps
+
+INSTALLS += icon86 icon108 icon128 icon256
+
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
-TRANSLATIONS += translations/displaytime-sv.ts \
-                translations/displaytime-nl.ts
+TRANSLATIONS += translations/harbour-displaytime-sv.ts \
+                translations/harbour-displaytime-nl.ts
 
 HEADERS += \
     src/osread.h \
     src/settings.h
-
 
