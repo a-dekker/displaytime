@@ -48,6 +48,7 @@ INSTALLS += icon86 icon108 icon128 icon256
 # following CONFIG line
 CONFIG += sailfishapp_i18n
 TRANSLATIONS += translations/harbour-displaytime-sv.ts \
+                translations/harbour-displaytime-ru.ts \
                 translations/harbour-displaytime-nl.ts
 
 HEADERS += \
