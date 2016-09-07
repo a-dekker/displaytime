@@ -187,19 +187,8 @@ Page {
         }
         Rectangle {
             anchors.fill: parent
-            color: "#151515"
+            color: "#000000"
             opacity: mainapp.opacity_level
-            gradient: Gradient {
-                GradientStop {
-                    position: 0.0
-                    color: "#303030"
-                }
-                GradientStop {
-                    position: 0.25
-                    color: "#000000"
-                }
-            }
-
             MouseArea {
                 id: mouseArea
                 anchors.fill: parent

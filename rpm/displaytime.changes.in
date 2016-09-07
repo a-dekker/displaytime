@@ -8,6 +8,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Tue Sep 07 2016 Jack Tar <jack.tar@example.com> 0.0.2-1
+- Removed minor backlight effect as it was too bright on the tablet screen
+
 * Tue Aug 16 2016 Jack Tar <jack.tar@example.com> 0.0.2-0
 - Russian translation added
 
