@@ -54,8 +54,6 @@ int main(int argc, char *argv[])
     // To display the view, call "show()" (will show fullscreen on device).
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     QQuickView* view = SailfishApp::createView();
-    view->engine()->addImportPath(SailfishApp::pathTo("lib/").toLocalFile());
-    view->engine()->addImportPath(SailfishApp::pathTo("qml/components/").toLocalFile());
     view->engine()->addImportPath(SailfishApp::pathTo("qml/pages/").toLocalFile());
     qmlRegisterType<Launcher>("harbour.displaytime.Launcher", 1 , 0 , "App");
     qmlRegisterType<Settings>("harbour.displaytime.Settings", 1 , 0 , "MySettings");

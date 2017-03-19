@@ -3,7 +3,7 @@ import Sailfish.Silica 1.0
 import harbour.displaytime.Settings 1.0
 
 Dialog {
-    id: page
+    id: settingPage
     canAccept: true
     allowedOrientations: Orientation.All
     orientationTransitions : customTransition
@@ -13,19 +13,19 @@ Dialog {
         from: 'Portrait,Landscape,PortraitInverted,LandscapeInverted'
         SequentialAnimation {
             PropertyAction {
-                target: page
+                target: settingPage
                 property: 'orientationTransitionRunning'
                 value: true
             }
             ParallelAnimation {
                 PropertyAnimation {
-                    target: page
+                    target: settingPage
                     properties: 'width,height'
                     duration: 500
                     easing.type: Easing.InOutCubic
                 }
                 RotationAnimation {
-                    target: page
+                    target: settingPage
                     properties: 'rotation'
                     duration: 500
                     direction: RotationAnimation.Shortest
@@ -34,18 +34,18 @@ Dialog {
 
                 SequentialAnimation {
                     PropertyAnimation {
-                        target: page
+                        target: settingPage
                         property: 'scale'
                         to: 0.66
                         duration: 250
                         easing.type: Easing.InCubic
                     }
                     PropertyAction {
-                        target: page
+                        target: settingPage
                         property: 'orientation'
                     }
                     PropertyAnimation {
-                        target: page
+                        target: settingPage
                         property: 'scale'
                         to: 1
                         duration: 250
@@ -54,7 +54,7 @@ Dialog {
                 }
             }
             PropertyAction {
-                target: page
+                target: settingPage
                 property: 'orientationTransitionRunning'
                 value: false
             }
@@ -113,25 +113,24 @@ Dialog {
 
                 acceptText: qsTr("Save")
                 cancelText: qsTr("Cancel")
-       //         title: qsTr("Settings")
             }
             TextSwitch {
                 id: backlight
                 width: parent.width
                 text: qsTr("Keep backlight on")
-                checked: myset.value("backlight") == "true"
+                checked: myset.value("backlight") === "true"
             }
             TextSwitch {
                 id: landscapelock
                 width: parent.width
                 text: qsTr("Lock clock to landscape")
-                checked: myset.value("landscapelock") == "true"
+                checked: myset.value("landscapelock") === "true"
             }
             TextSwitch {
                 id: customcolor
                 width: parent.width
                 text: qsTr("Custom display color")
-                checked: myset.value("customcolor") == "true"
+                checked: myset.value("customcolor") === "true"
             }
             BackgroundItem {
                 id: colorPickerButton
