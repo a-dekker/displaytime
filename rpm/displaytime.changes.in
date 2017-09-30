@@ -8,6 +8,14 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sat Sep 30 2017 Jack Tar <jack.tar@example.com> 0.0.3-1
+- rotate cover to landscape on smaller devices
+
+* Mon Sep 25 2017 Jack Tar <jack.tar@example.com> 0.0.3-0
+- Fixed bug in settingspage
+- Fixed some potential 12h display issue
+- Take more resolutions into account
+
 * Tue Sep 07 2016 Jack Tar <jack.tar@example.com> 0.0.2-1
 - Removed minor backlight effect as it was too bright on the tablet screen
 

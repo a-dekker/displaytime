@@ -6,7 +6,7 @@ Dialog {
     id: settingPage
     canAccept: true
     allowedOrientations: Orientation.All
-    orientationTransitions : customTransition
+    orientationTransitions: customTransition
 
     property Transition customTransition: Transition {
         to: 'Portrait,Landscape,PortraitInverted,LandscapeInverted'
@@ -62,28 +62,29 @@ Dialog {
     }
 
     onAccepted: {
-        myset.setValue("backlight", backlight.checked)
-        if ( backlight.checked ) {
+        if (backlight.checked) {
             mainapp.backlight_on = "true"
-        }
-        else {
+            myset.setValue("backlight", "true")
+        } else {
             mainapp.backlight_on = "false"
+            myset.setValue("backlight", "false")
         }
         myset.setValue("landscapelock", landscapelock.checked)
-        if ( landscapelock.checked ) {
+        if (landscapelock.checked) {
             mainapp.rotation = Orientation.Landscape
-        }
-        else {
-             mainapp.rotation = Orientation.All
+            myset.setValue("landscapelock", "true")
+        } else {
+            mainapp.rotation = Orientation.All
+            myset.setValue("landscapelock", "false")
         }
         myset.setValue("brightness", 1 - brightness.valueText)
         mainapp.opacity_level = 1 - brightness.valueText
-        myset.setValue("customcolor", customcolor.checked)
-        if ( customcolor.checked ) {
+        if (customcolor.checked) {
             mainapp.custom_color = "true"
-        }
-        else {
+            myset.setValue("customcolor", "true")
+        } else {
             mainapp.custom_color = "false"
+            myset.setValue("customcolor", "false")
         }
         myset.setValue("colorcode", colorIndicator.color)
         mainapp.color_code = colorIndicator.color
@@ -144,7 +145,9 @@ Dialog {
 
                         width: height
                         height: parent.height
-                        color: myset.contains("colorcode") ? myset.value("colorcode") : "#e60003"
+                        color: myset.contains(
+                                   "colorcode") ? myset.value(
+                                                      "colorcode") : "#e60003"
                         border.color: "black"
                         border.width: 3
                         radius: 10.0
@@ -156,15 +159,19 @@ Dialog {
                     }
                 }
                 onClicked: {
-                    var page = pageStack.push("Sailfish.Silica.ColorPickerPage", { color: colorIndicator.color })
-                    page.colorClicked.connect(function(color) {
+                    var page = pageStack.push(
+                                "Sailfish.Silica.ColorPickerPage", {
+                                    color: colorIndicator.color
+                                })
+                    page.colorClicked.connect(function (color) {
                         colorIndicator.color = color
                         pageStack.pop()
-                  })
+                    })
                 }
                 Component {
                     id: colorPickerPage
-                    ColorPickerPage {}
+                    ColorPickerPage {
+                    }
                 }
             }
 
@@ -173,12 +180,14 @@ Dialog {
                 width: parent.width
                 minimumValue: 0.2
                 maximumValue: 1
-                value: myset.value("brightness") > -1 ? (1 - myset.value("brightness")) : 0.5
+                value: myset.value(
+                           "brightness") > -1 ? (1 - myset.value(
+                                                     "brightness")) : 0.5
                 valueText: value.toFixed(1)
                 label: qsTr("Clock-text brightness")
             }
             Label {
-                text: "© Arno Dekker 2014-2016"
+                text: "© Arno Dekker 2014-2017"
                 color: Theme.secondaryHighlightColor
                 anchors.horizontalCenter: parent.horizontalCenter
             }

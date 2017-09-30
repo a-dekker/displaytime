@@ -8,61 +8,62 @@ import org.nemomobile.configuration 1.0
 Page {
     id: page
 
-    property bool largeScreen: Screen.sizeCategory === Screen.Large ||
-                               Screen.sizeCategory === Screen.ExtraLarge
+    property bool largeScreen: screen.width > 1080
+    property bool mediumScreen: (screen.width > 540 && screen.width <= 1080)
 
+    // property bool smallScreen: (screen.width  <= 540)
     property Transition customTransition: Transition {
-                                              to: 'Portrait,Landscape,PortraitInverted,LandscapeInverted'
-                                              from: 'Portrait,Landscape,PortraitInverted,LandscapeInverted'
-                                              SequentialAnimation {
-                                                  PropertyAction {
-                                                      target: page
-                                                      property: 'orientationTransitionRunning'
-                                                      value: true
-                                                  }
-                                                  ParallelAnimation {
-                                                      PropertyAnimation {
-                                                          target: page
-                                                          properties: 'width,height'
-                                                          duration: 500
-                                                          easing.type: Easing.InOutCubic
-                                                      }
-                                                      RotationAnimation {
-                                                          target: page
-                                                          properties: 'rotation'
-                                                          duration: 500
-                                                          direction: RotationAnimation.Shortest
-                                                          easing.type: Easing.InOutCubic
-                                                      }
+        to: 'Portrait,Landscape,PortraitInverted,LandscapeInverted'
+        from: 'Portrait,Landscape,PortraitInverted,LandscapeInverted'
+        SequentialAnimation {
+            PropertyAction {
+                target: page
+                property: 'orientationTransitionRunning'
+                value: true
+            }
+            ParallelAnimation {
+                PropertyAnimation {
+                    target: page
+                    properties: 'width,height'
+                    duration: 500
+                    easing.type: Easing.InOutCubic
+                }
+                RotationAnimation {
+                    target: page
+                    properties: 'rotation'
+                    duration: 500
+                    direction: RotationAnimation.Shortest
+                    easing.type: Easing.InOutCubic
+                }
 
-                                                      SequentialAnimation {
-                                                          PropertyAnimation {
-                                                              target: page
-                                                              property: 'scale'
-                                                              to: 0.66
-                                                              duration: 250
-                                                              easing.type: Easing.InCubic
-                                                          }
-                                                          PropertyAction {
-                                                              target: page
-                                                              property: 'orientation'
-                                                          }
-                                                          PropertyAnimation {
-                                                              target: page
-                                                              property: 'scale'
-                                                              to: 1
-                                                              duration: 250
-                                                              easing.type: Easing.OutCubic
-                                                          }
-                                                      }
-                                                  }
-                                                  PropertyAction {
-                                                      target: page
-                                                      property: 'orientationTransitionRunning'
-                                                      value: false
-                                                  }
-                                              }
-                                          }
+                SequentialAnimation {
+                    PropertyAnimation {
+                        target: page
+                        property: 'scale'
+                        to: 0.66
+                        duration: 250
+                        easing.type: Easing.InCubic
+                    }
+                    PropertyAction {
+                        target: page
+                        property: 'orientation'
+                    }
+                    PropertyAnimation {
+                        target: page
+                        property: 'scale'
+                        to: 1
+                        duration: 250
+                        easing.type: Easing.OutCubic
+                    }
+                }
+            }
+            PropertyAction {
+                target: page
+                property: 'orientationTransitionRunning'
+                value: false
+            }
+        }
+    }
 
     property int _timerinterval: 1000
     allowedOrientations: mainapp.rotation
@@ -84,14 +85,14 @@ Page {
         }
 
         property DBusInterface _dbus: DBusInterface {
-                                          id: dbus
+            id: dbus
 
-                                          service: "com.nokia.mce"
-                                          path: "/com/nokia/mce/request"
-                                          iface: "com.nokia.mce.request"
+            service: "com.nokia.mce"
+            path: "/com/nokia/mce/request"
+            iface: "com.nokia.mce.request"
 
-                                          bus : DBusInterface.SystemBus
-                                      }
+            bus: DBusInterface.SystemBus
+        }
     }
 
     Timer {
@@ -109,13 +110,13 @@ Page {
                 currentTime.text = Qt.formatDateTime(new Date(), "h:mm")
             } else {
                 currentTime.text = Qt.formatDateTime(new Date(),
-                                                     "h:mm a").slice(0, -2)
+                                                     "h:mm a").replace(/\./g,'').slice(0,-2)
             }
             if (timeFormatConfig.value === "24") {
                 mainapp.timeText = currentTime.text
             } else {
                 mainapp.timeText = currentTime.text + Qt.formatDateTime(
-                            new Date(), "ap")
+                            new Date(), "ap").replace(/\./g,'')
             }
         }
     }
@@ -154,10 +155,9 @@ Page {
             }
             Label {
                 id: amPm
-                text: Qt.formatDateTime(new Date(), "ap")
+                text: Qt.formatDateTime(new Date(), "ap").replace(/\./g,'')
                 font.family: digitalFont.name
-                font.pixelSize: page.isLandscape ? (largeScreen ? Theme.fontSizeExtraLarge * 4 : Theme.fontSizeExtraLarge * 2
-                                                            ) : Theme.fontSizeExtraLarge * 2
+                font.pixelSize: page.isLandscape ? (largeScreen ? Theme.fontSizeExtraLarge * 4 : (mediumScreen ? Theme.fontSizeExtraLarge * 3 : Theme.fontSizeExtraLarge * 2)) : Theme.fontSizeExtraLarge * 2
                 anchors.right: parent.right
                 anchors.rightMargin: Theme.paddingLarge
                 y: page.isLandscape ? (Theme.fontSizeMedium) : (parent.height / 2) - 150
@@ -171,7 +171,7 @@ Page {
                         return Qt.formatDateTime(new Date(), "h:mm")
                     } else {
                         return Qt.formatDateTime(new Date(),
-                                                 "h:mm a").slice(0, -2)
+                                                 "h:mm a").replace(/\./g,'').slice(0,-2)
                     }
                 }
                 color: mainapp.custom_color == "true" ? mainapp.color_code : Theme.highlightColor
@@ -179,9 +179,7 @@ Page {
                 verticalAlignment: Text.AlignVCenter
                 height: parent.height
                 width: parent.width
-                font.pixelSize: page.isLandscape ? (largeScreen ? Theme.fontSizeExtraLarge
-                                                            * 11 : Theme.fontSizeExtraLarge
-                                                            * 7) : (largeScreen ? Theme.fontSizeExtraLarge * 8 : Theme.fontSizeExtraLarge * 4)
+                font.pixelSize: page.isLandscape ? (largeScreen ? Theme.fontSizeExtraLarge * 11 : (mediumScreen ? Theme.fontSizeExtraLarge * 9 : Theme.fontSizeExtraLarge * 7)) : (largeScreen ? Theme.fontSizeExtraLarge * 8 : Theme.fontSizeExtraLarge * 4)
                 font.family: digitalFont.name
             }
         }
