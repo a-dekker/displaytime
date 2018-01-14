@@ -27,7 +27,7 @@ CoverBackground {
         Label {
             color: Theme.secondaryColor
             anchors.horizontalCenter: parent.horizontalCenter
-            text: "displaytime"
+            text: "DisplayTime\n"
         }
         Label {
             FontLoader {
