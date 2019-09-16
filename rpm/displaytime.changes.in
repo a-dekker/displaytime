@@ -8,6 +8,12 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Mon Sep 16 2019 Jack Tar <jack.tar@example.com> 0.0.4-2
+- Added Chinese by dashinfantry
+
+* Mon Sep 16 2019 Jack Tar <jack.tar@example.com> 0.0.4-1
+- Decrease fontsize for 720p devices
+
 * Sat Sep 30 2017 Jack Tar <jack.tar@example.com> 0.0.3-1
 - rotate cover to landscape on smaller devices
 

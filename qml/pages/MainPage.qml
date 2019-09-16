@@ -1,17 +1,18 @@
-import QtQuick 2.0
+import QtQuick 2.2
 import Sailfish.Silica 1.0
 import harbour.displaytime.Launcher 1.0
 import harbour.displaytime.Settings 1.0
-import org.nemomobile.dbus 2.0
-import org.nemomobile.configuration 1.0
+import Nemo.DBus 2.0
+import Nemo.Configuration 1.0
 
 Page {
     id: page
 
-    property bool largeScreen: screen.width > 1080
-    property bool mediumScreen: (screen.width > 540 && screen.width <= 1080)
-
     // property bool smallScreen: (screen.width  <= 540)
+    // property bool mediumScreen: (screen.width > 540 && screen.width <= 720)
+    property bool largerScreen: (screen.width > 720 && screen.width <= 1080)
+    property bool largeScreen: screen.width > 1080
+
     property Transition customTransition: Transition {
         to: 'Portrait,Landscape,PortraitInverted,LandscapeInverted'
         from: 'Portrait,Landscape,PortraitInverted,LandscapeInverted'
@@ -110,13 +111,14 @@ Page {
                 currentTime.text = Qt.formatDateTime(new Date(), "h:mm")
             } else {
                 currentTime.text = Qt.formatDateTime(new Date(),
-                                                     "h:mm a").replace(/\./g,'').slice(0,-2)
+                                                     "h:mm a").replace(
+                            /\./g, '').slice(0, -2)
             }
             if (timeFormatConfig.value === "24") {
                 mainapp.timeText = currentTime.text
             } else {
                 mainapp.timeText = currentTime.text + Qt.formatDateTime(
-                            new Date(), "ap").replace(/\./g,'')
+                            new Date(), "ap").replace(/\./g, '')
             }
         }
     }
@@ -155,9 +157,9 @@ Page {
             }
             Label {
                 id: amPm
-                text: Qt.formatDateTime(new Date(), "ap").replace(/\./g,'')
+                text: Qt.formatDateTime(new Date(), "ap").replace(/\./g, '')
                 font.family: digitalFont.name
-                font.pixelSize: page.isLandscape ? (largeScreen ? Theme.fontSizeExtraLarge * 4 : (mediumScreen ? Theme.fontSizeExtraLarge * 3 : Theme.fontSizeExtraLarge * 2)) : Theme.fontSizeExtraLarge * 2
+                font.pixelSize: page.isLandscape ? (largeScreen ? Theme.fontSizeExtraLarge * 4 : (largerScreen ? Theme.fontSizeExtraLarge * 3 : Theme.fontSizeExtraLarge * 2)) : Theme.fontSizeExtraLarge * 2
                 anchors.right: parent.right
                 anchors.rightMargin: Theme.paddingLarge
                 y: page.isLandscape ? (Theme.fontSizeMedium) : (parent.height / 2) - 150
@@ -171,7 +173,9 @@ Page {
                         return Qt.formatDateTime(new Date(), "h:mm")
                     } else {
                         return Qt.formatDateTime(new Date(),
-                                                 "h:mm a").replace(/\./g,'').slice(0,-2)
+                                                 "h:mm a").replace(/\./g,
+                                                                   '').slice(0,
+                                                                             -2)
                     }
                 }
                 color: mainapp.custom_color == "true" ? mainapp.color_code : Theme.highlightColor
@@ -179,7 +183,7 @@ Page {
                 verticalAlignment: Text.AlignVCenter
                 height: parent.height
                 width: parent.width
-                font.pixelSize: page.isLandscape ? (largeScreen ? Theme.fontSizeExtraLarge * 11 : (mediumScreen ? Theme.fontSizeExtraLarge * 9 : Theme.fontSizeExtraLarge * 7)) : (largeScreen ? Theme.fontSizeExtraLarge * 8 : Theme.fontSizeExtraLarge * 4)
+                font.pixelSize: page.isLandscape ? (largeScreen ? Theme.fontSizeExtraLarge * 11 : (largerScreen ? Theme.fontSizeExtraLarge * 9 : Theme.fontSizeExtraLarge * 7)) : (largeScreen ? Theme.fontSizeExtraLarge * 8 : Theme.fontSizeExtraLarge * 4)
                 font.family: digitalFont.name
             }
         }

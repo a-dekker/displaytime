@@ -187,7 +187,7 @@ Dialog {
                 label: qsTr("Clock-text brightness")
             }
             Label {
-                text: "© Arno Dekker 2014-2017"
+                text: "© Arno Dekker 2014-2019"
                 color: Theme.secondaryHighlightColor
                 anchors.horizontalCenter: parent.horizontalCenter
             }
