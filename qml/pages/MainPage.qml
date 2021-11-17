@@ -1,6 +1,5 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
-import harbour.displaytime.Launcher 1.0
 import harbour.displaytime.Settings 1.0
 import Nemo.DBus 2.0
 import Nemo.Configuration 1.0
@@ -140,9 +139,6 @@ Page {
         // Tell SilicaFlickable the height of its content.
         contentHeight: parent.height
 
-        App {
-            id: bar
-        }
         ConfigurationValue {
             id: timeFormatConfig
             key: "/sailfish/i18n/lc_timeformat24h"

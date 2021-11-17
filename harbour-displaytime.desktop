@@ -4,3 +4,8 @@ X-Nemo-Application-Type=silica-qt5
 Name=DisplayTime
 Icon=harbour-displaytime
 Exec=harbour-displaytime
+
+[X-Sailjail]
+OrganizationName=org.adekker
+ApplicationName=displaytime
+Permissions=

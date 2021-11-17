@@ -15,14 +15,12 @@ TARGET = harbour-displaytime
 CONFIG += sailfishapp
 
 SOURCES += src/displaytime.cpp \
-    src/osread.cpp \
     src/settings.cpp
 
 OTHER_FILES += qml/displaytime.qml \
     qml/cover/CoverPage.qml \
     rpm/displaytime.changes.in \
     rpm/displaytime.spec \
-    rpm/displaytime.yaml \
     translations/*.ts \
     harbour-displaytime.desktop \
     qml/pages/MainPage.qml \
@@ -56,5 +54,4 @@ TRANSLATIONS += translations/harbour-displaytime-sv.ts \
                 translations/harbour-displaytime-nl.ts
 
 HEADERS += \
-    src/osread.h \
     src/settings.h

@@ -3,10 +3,12 @@
 Settings::Settings(QObject *parent) :
     QObject(parent)
 {
+    settings_ = new QSettings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) +
+                              "/org.adekker/displaytime/harbour-displaytime.conf", QSettings::NativeFormat);
 }
 
 void Settings::setValue(const QString &key, const QVariant &value) {
-    settings_.setValue(key, value);
+    settings_->setValue(key, value);
 }
 int Settings::valueInt(const QString& key, int defaultValue) const {
     return value(key, defaultValue).toInt();
@@ -15,14 +17,14 @@ QString Settings::valueString(const QString& key, const QString& defaultValue) c
     return value(key, defaultValue).toString();
 }
 QVariant Settings::value(const QString &key, const QVariant &defaultValue) const {
-    return settings_.value(key, defaultValue);
+    return settings_->value(key, defaultValue);
 }
 bool Settings::contains(const QString &key) const {
-    return settings_.contains(key);
+    return settings_->contains(key);
 }
 void Settings::remove(const QString& key) {
-    return settings_.remove(key);
+    return settings_->remove(key);
 }
 void Settings::sync() {
-    return settings_.sync();
+    return settings_->sync();
 }

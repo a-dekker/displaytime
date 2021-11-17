@@ -13,8 +13,8 @@ Name:       harbour-displaytime
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Displays time like an alarmclock
-Version:    0.4
-Release:    2
+Version:    0.5
+Release:    1
 Group:      Qt/Qt
 License:    LICENSE
 URL:        https://github.com/a-dekker/displaytime

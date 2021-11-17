@@ -8,6 +8,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Wed Nov 17 2021 Jack Tar <jack.tar@example.com> 0.0.5-1
+- Added sailjail permissions
+
 * Mon Sep 16 2019 Jack Tar <jack.tar@example.com> 0.0.4-2
 - Added Chinese by dashinfantry
 

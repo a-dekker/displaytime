@@ -39,7 +39,6 @@
 #include <QTimer>
 #include <QQuickView>
 #include <sailfishapp.h>
-#include "osread.h"
 #include "settings.h"
 
 int main(int argc, char *argv[])
@@ -55,7 +54,6 @@ int main(int argc, char *argv[])
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     QQuickView* view = SailfishApp::createView();
     view->engine()->addImportPath(SailfishApp::pathTo("qml/pages/").toLocalFile());
-    qmlRegisterType<Launcher>("harbour.displaytime.Launcher", 1 , 0 , "App");
     qmlRegisterType<Settings>("harbour.displaytime.Settings", 1 , 0 , "MySettings");
 
     view->setSource(SailfishApp::pathTo("qml/displaytime.qml"));
